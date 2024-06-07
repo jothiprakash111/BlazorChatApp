@@ -1,0 +1,34 @@
+﻿@page "/register"
+@using SignalRChat.Shared.Models.Dto
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+<h3>Register Page</h3>
+
+<InputText DisplayName="UserName" @bind-Value=registerDto.UserName />
+<InputText DisplayName="Password" @bind-Value=registerDto.Password />
+<InputText DisplayName="Email" @bind-Value=registerDto.Email />
+
+<button @onclick=RegisterClicked>Register</button>
+
+
+@code{
+    RegisterDto registerDto { get; set; } = new RegisterDto();
+
+
+    public async void RegisterClicked(MouseEventArgs eventArgs){
+        var result = await Http.PostAsJsonAsync($"api/register", registerDto);
+
+        if (result.IsSuccessStatusCode)
+        {
+            // await JSRuntime.InvokeVoidAsync("alert","Registration success, Login to Continue","Ok",()=>
+            // {
+            //     NavigationManager.NavigateTo("/login", false);
+            
+            // });
+
+            
+        }
+        
+    }
+}

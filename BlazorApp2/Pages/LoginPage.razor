@@ -1,0 +1,48 @@
+﻿@page "/login"
+@using BlazorApp2.Services
+@using BlazorDemo.Data
+@using Newtonsoft.Json
+@using SignalRChat.Shared.Models.Dto
+@using Blazored.SessionStorage;
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+@inject ISyncSessionStorageService SessionStorage
+@inject IMessageService MessageService
+
+<h3>loginPage</h3>
+
+<InputText DisplayName="UserName" @bind-Value=loginDto.UserName />
+<InputText DisplayName="Password" @bind-Value=loginDto.Password />
+<button @onclick=LoginClicked>Login</button>
+<NavLink href="/register" >Register></NavLink>
+
+@code {
+    private LoginDto loginDto { get; set; } = new LoginDto();
+
+    private async void LoginClicked(MouseEventArgs args)
+    {
+        var result = await Http.PostAsJsonAsync($"api/login", loginDto);
+
+        if(result.IsSuccessStatusCode)
+        {
+            try
+            {
+                var json = await result.Content.ReadAsStringAsync();
+                var res = JsonConvert.DeserializeObject<LoginResponseDto>(json);
+
+                Settings.AppSettings = SessionStorage;
+                Settings.UserName = loginDto.UserName;
+                Settings.UserId = res.LoginUserId;
+
+                await MessageService.Initialize();
+
+            }catch(Exception ex)
+            {
+                
+            }
+
+            NavigationManager.NavigateTo("/home", false);
+        }
+    }
+
+}

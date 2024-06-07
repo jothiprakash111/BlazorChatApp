@@ -1,0 +1,11 @@
+C:\Users\jothiprakash.beeman\source\repos\BlazorApp2\SignalRChat.Shared\bin\Debug\net8.0\SignalRChat.Shared.deps.json
+C:\Users\jothiprakash.beeman\source\repos\BlazorApp2\SignalRChat.Shared\bin\Debug\net8.0\SignalRChat.Shared.dll
+C:\Users\jothiprakash.beeman\source\repos\BlazorApp2\SignalRChat.Shared\bin\Debug\net8.0\SignalRChat.Shared.pdb
+C:\Users\jothiprakash.beeman\source\repos\BlazorApp2\SignalRChat.Shared\obj\Debug\net8.0\SignalRChat.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jothiprakash.beeman\source\repos\BlazorApp2\SignalRChat.Shared\obj\Debug\net8.0\SignalRChat.Shared.AssemblyInfoInputs.cache
+C:\Users\jothiprakash.beeman\source\repos\BlazorApp2\SignalRChat.Shared\obj\Debug\net8.0\SignalRChat.Shared.AssemblyInfo.cs
+C:\Users\jothiprakash.beeman\source\repos\BlazorApp2\SignalRChat.Shared\obj\Debug\net8.0\SignalRChat.Shared.csproj.CoreCompileInputs.cache
+C:\Users\jothiprakash.beeman\source\repos\BlazorApp2\SignalRChat.Shared\obj\Debug\net8.0\SignalRChat.Shared.dll
+C:\Users\jothiprakash.beeman\source\repos\BlazorApp2\SignalRChat.Shared\obj\Debug\net8.0\refint\SignalRChat.Shared.dll
+C:\Users\jothiprakash.beeman\source\repos\BlazorApp2\SignalRChat.Shared\obj\Debug\net8.0\SignalRChat.Shared.pdb
+C:\Users\jothiprakash.beeman\source\repos\BlazorApp2\SignalRChat.Shared\obj\Debug\net8.0\ref\SignalRChat.Shared.dll

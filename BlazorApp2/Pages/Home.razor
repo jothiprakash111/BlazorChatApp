@@ -1,0 +1,66 @@
+﻿@page "/home"
+@using SignalRChat.Shared.Models.Dto
+@using BlazorDemo.Data
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+<PageTitle>Home</PageTitle>
+
+Online Users
+<ul>
+    @foreach (var item in users.Where(x=>x.IsOnline == true).ToList())
+    {
+        <li @onclick="@((e)=>{ItemClicked(e,item);})">
+            @item.UserName
+        </li>
+    }
+</ul>
+
+Offline Users
+<ul>
+    @foreach (var item in users.Where(x => x.IsOnline == false).ToList())
+    {
+        <li @onclick="@((e)=>{ItemClicked(e,item);})">
+            @item.UserName
+        </li>
+    }
+</ul>
+
+
+
+
+
+
+@code{
+
+    UserDto[] users = new UserDto[] { };
+
+    private async void ItemClicked(MouseEventArgs e, UserDto userDto)
+    {
+        try
+        {
+            NavigationManager.NavigateTo("/chatPage/{" + userDto.Id + "}/{"+userDto.UserName+"}");
+
+        }
+        catch (Exception ex)
+        {
+
+        }
+    }
+
+    protected async override Task OnInitializedAsync()
+    {
+        try 
+        {
+            users = await Http.GetFromJsonAsync<UserDto[]>($"api/users/"+Settings.UserId, CancellationToken.None);
+
+            
+        }
+        catch(Exception ex)
+        {
+            
+        }
+    }
+
+    
+}

@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp2", "BlazorApp2\BlazorApp2.csproj", "{1BA585C3-AC3B-44AB-BC29-824DCC8E940A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRChat", "..\SignalRChat\SignalRChat\SignalRChat.csproj", "{43EA2EB4-9D0A-4A7D-BE8B-75F825931F08}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{55A4DD2E-1A06-4CD6-A222-E7BCDFF0A2F7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApp", "WebApp", "{865D613D-37CA-4B0F-8FDF-99F57FE737ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRChat.Core", "SignalRChat.core\SignalRChat.Core.csproj", "{146D257F-2BDB-4E33-B2BF-9C238F1A3CBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRChat.Shared", "SignalRChat.Shared\SignalRChat.Shared.csproj", "{3057DBF1-C68D-407A-93A9-5A046029E357}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1BA585C3-AC3B-44AB-BC29-824DCC8E940A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BA585C3-AC3B-44AB-BC29-824DCC8E940A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BA585C3-AC3B-44AB-BC29-824DCC8E940A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BA585C3-AC3B-44AB-BC29-824DCC8E940A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43EA2EB4-9D0A-4A7D-BE8B-75F825931F08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43EA2EB4-9D0A-4A7D-BE8B-75F825931F08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43EA2EB4-9D0A-4A7D-BE8B-75F825931F08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43EA2EB4-9D0A-4A7D-BE8B-75F825931F08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{146D257F-2BDB-4E33-B2BF-9C238F1A3CBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{146D257F-2BDB-4E33-B2BF-9C238F1A3CBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{146D257F-2BDB-4E33-B2BF-9C238F1A3CBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{146D257F-2BDB-4E33-B2BF-9C238F1A3CBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3057DBF1-C68D-407A-93A9-5A046029E357}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3057DBF1-C68D-407A-93A9-5A046029E357}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3057DBF1-C68D-407A-93A9-5A046029E357}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3057DBF1-C68D-407A-93A9-5A046029E357}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1BA585C3-AC3B-44AB-BC29-824DCC8E940A} = {865D613D-37CA-4B0F-8FDF-99F57FE737ED}
+		{43EA2EB4-9D0A-4A7D-BE8B-75F825931F08} = {55A4DD2E-1A06-4CD6-A222-E7BCDFF0A2F7}
+		{146D257F-2BDB-4E33-B2BF-9C238F1A3CBD} = {55A4DD2E-1A06-4CD6-A222-E7BCDFF0A2F7}
+		{3057DBF1-C68D-407A-93A9-5A046029E357} = {55A4DD2E-1A06-4CD6-A222-E7BCDFF0A2F7}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CA0F5020-3C79-4EAA-A247-BD131D9F2076}
+	EndGlobalSection
+EndGlobal

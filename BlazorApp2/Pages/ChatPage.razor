@@ -1,0 +1,86 @@
+﻿@page "/chatPage/{ReceiverUserId}/{Name}"
+@using BlazorApp2.Services
+@using BlazorDemo.Data
+@using Microsoft.AspNetCore.SignalR.Client
+@using SignalRChat.Shared.Models.Dto
+@inject HttpClient Http
+@inject IMessageService MessageService
+<h3>ChatPage</h3>
+
+
+<input type="text" @bind-value=DisplayMessage />
+<button @onclick=OnButtonClick>Add</button>
+<ul>
+    @foreach (var item in Messages)
+    {
+        <li>
+            @item
+        </li>
+    }
+
+</ul>
+
+
+
+
+
+@code {
+    [Parameter]
+    public string ReceiverUserId { get; set; } = string.Empty;
+
+    [Parameter]
+    public string Name { get; set; } = string.Empty;
+
+    List<string> Messages { get; set; } = new List<string>() { "test", "test1" };
+
+    string DisplayMessage { get; set; }
+
+    async Task OnButtonClick(MouseEventArgs args)
+    {
+        var newId = ReceiverUserId.Replace("}", "").Replace("{", "");
+        await MessageService.SendMessageToUser(Settings.UserId, newId, DisplayMessage);
+    }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            string userName = string.Empty;
+
+            MessageService.OnReceiveMessage += async (senderId, receiverId, message) =>
+            {
+
+                if(senderId == Settings.UserId)
+                {
+                    userName = Settings.UserName;
+                    Messages.Add(userName +" : "+ message);
+                }
+                else
+                {
+
+                    Messages.Add(Name +" : "+message);
+                }
+
+                await InvokeAsync(StateHasChanged);
+            };
+        }
+        catch (Exception ex)
+        {
+
+        }
+    }
+
+
+    public class WeatherForecast
+    {
+        public DateOnly Date { get; set; }
+
+        public int TemperatureC { get; set; }
+
+        public string? Summary { get; set; }
+
+        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    }
+}
+

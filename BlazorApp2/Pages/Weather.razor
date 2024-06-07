@@ -1,0 +1,92 @@
+﻿@page "/weather"
+@using Microsoft.AspNetCore.SignalR.Client
+@inject HttpClient Http
+
+<PageTitle>Weather</PageTitle>
+
+<h1>Weather</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+
+<input type="text" @bind-value =DisplayMessage />
+<button @onclick =OnButtonClick >Add</button>
+<ul>
+    @foreach(var item in Messages)
+    {
+        <li>
+            @item
+        </li>
+    }
+
+</ul>
+
+
+
+
+
+@code {
+    private HubConnection hubConnection;
+    List<string> Messages { get; set; } = new List<string>() { "test", "test1" };
+
+    string DisplayMessage { get; set; }
+    async Task HandleChange(ChangeEventArgs args)
+    {
+        DisplayMessage = args.Value.ToString();
+        Messages.Add(DisplayMessage);
+        await InvokeAsync(StateHasChanged);
+    }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            hubConnection = new HubConnectionBuilder()
+        .WithUrl(Http.BaseAddress +"chathub")
+        .Build();
+
+
+
+            hubConnection.On<string, string>("ReceiveAllMessage", (user, message) =>
+            {
+                var encodedMsg = $"{user}: {message}";
+                Messages.Add(encodedMsg);
+                InvokeAsync(StateHasChanged);
+            });
+
+            await hubConnection.StartAsync();
+
+            var state = hubConnection.State;
+
+            var connectionId = hubConnection.ConnectionId;
+        }
+        catch (Exception ex)
+        {
+
+        }
+    }
+
+    public class WeatherForecast
+    {
+        public DateOnly Date { get; set; }
+
+        public int TemperatureC { get; set; }
+
+        public string? Summary { get; set; }
+
+        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    }
+
+    private async void OnButtonClick(MouseEventArgs e)
+    {
+        try {
+
+            await hubConnection.InvokeAsync("SendMessageToAll", hubConnection.ConnectionId.ToString(), DisplayMessage);
+            DisplayMessage = "";
+        }catch(Exception ex)
+        {
+            
+        }
+    }
+}
